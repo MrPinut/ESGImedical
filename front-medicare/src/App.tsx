@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Navbar, { Navigation } from "@/scenes/navbar";
+import Home from "@/scenes/home";
+import { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
 
 function App() {
+  const [accounts, setAccounts] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app bg-gray-20">
+      <Navigation accounts={accounts} setAccounts={setAccounts} />
+
+      <BrowserRouter>
+        <Routes>
+          <Route
+            index
+            path="/"
+            element={<Home accounts={accounts} setAccounts={setAccounts} />}
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
