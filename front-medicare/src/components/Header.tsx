@@ -72,7 +72,7 @@ function NavScrollExample() {
                 Historiques
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">Mon Compte</NavDropdown.Item>
+              <NavDropdown.Item href="/account">Mon Compte</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#" disabled></Nav.Link>
           </Nav>
