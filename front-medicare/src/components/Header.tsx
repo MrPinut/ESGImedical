@@ -5,6 +5,8 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import {
   EthereumClient,
   w3mConnectors,
@@ -27,6 +29,22 @@ const wagmiConfig = createConfig({
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
 function NavScrollExample() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  function handleHome() {
+    navigate("/");
+  }
+  function handleHistories() {
+    navigate("/histories");
+  }
+
+  function handleMenu() {
+    navigate("/Menu", { state: { connect: false } });
+  }
+  function handleMenuConnected() {
+    navigate("/Menu/user", { state: { connect: true } });
+  }
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -46,11 +64,13 @@ function NavScrollExample() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Accueil</Nav.Link>
+            <Nav.Link onClick={handleHome}>Accueil</Nav.Link>
             <Nav.Link href="#action2">Mes RDVs</Nav.Link>
             <NavDropdown title="Informations" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Documents</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Historiques</NavDropdown.Item>
+              <NavDropdown.Item>Documents</NavDropdown.Item>
+              <NavDropdown.Item onClick={handleHistories}>
+                Historiques
+              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">Mon Compte</NavDropdown.Item>
             </NavDropdown>
