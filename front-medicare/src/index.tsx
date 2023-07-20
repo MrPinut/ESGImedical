@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import History from "./pages/users/history/History";
 import Consultations from "./pages/users/history/Consultations";
+import Account from "./pages/users/Account";
+import Payment from "./pages/users/Payment";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,6 +21,8 @@ root.render(
           <Route path="/" element={<App />}></Route>
           <Route path="/histories" element={<History />}></Route>
           <Route path="/consultations" element={<Consultations />}></Route>
+          <Route path="/account" element={<Account />}></Route>
+          <Route path="/account/payment" element={<Payment />}></Route>
           {/* <Route path="/modifyDrink/admin" element={<UpdateDrink />}></Route> */}
         </Routes>
       </BrowserRouter>
