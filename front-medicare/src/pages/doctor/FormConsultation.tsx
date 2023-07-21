@@ -5,11 +5,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function FormConsultation() {
   const navigate = useNavigate();
-  const location = useLocation();
 
   function handleSubmit() {
     // HANDLE DATA NEED TO BE SUBMITTED
