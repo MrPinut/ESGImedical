@@ -1,9 +1,5 @@
 import NavDoctor from "../../components/NavDoctor";
-import Form from "react-bootstrap/Form";
-import { Button, Card } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Button, Card, Container, Row, Col, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Datetime from "react-datetime";
 

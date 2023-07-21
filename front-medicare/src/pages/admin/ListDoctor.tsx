@@ -1,7 +1,6 @@
-import Table from "react-bootstrap/Table";
 import NavAdmin from "../../components/NavAdmin";
 import MiniNavAdmin from "../../components/MiniNavAdmin";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row, Table } from "react-bootstrap";
 
 function ListDoctors() {
   return (
