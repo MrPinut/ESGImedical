@@ -12,9 +12,6 @@ function MiniNavAdmin() {
       <Nav.Item>
         <Nav.Link href="/admin/listDoctor">Liste Docteurs</Nav.Link>
       </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/admin/listParamed">Liste des paramédicaux</Nav.Link>
-      </Nav.Item>
     </Nav>
   );
 }

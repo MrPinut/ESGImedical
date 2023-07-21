@@ -15,21 +15,15 @@ function AddPatient() {
         <Container>
           <Row>
             <Col>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
+              <Form.Group className="mb-3" controlId="">
                 <Form.Label>Nom</Form.Label>
-                <Form.Control type="name" placeholder="name@example.com" />
+                <Form.Control type="name" placeholder="" />
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlSelect1"
-              >
+              <Form.Group className="mb-3" controlId="">
                 <Form.Label>Prénom</Form.Label>
-                <Form.Control type="name" placeholder="name@example.com" />
+                <Form.Control type="name" placeholder="" />
               </Form.Group>
             </Col>
             <Col>
@@ -56,41 +50,29 @@ function AddPatient() {
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlSelect1"
-              >
+              <Form.Group className="mb-3" controlId="">
                 <Form.Label>Nationalité</Form.Label>
-                <Form.Control type="name" placeholder="name@example.com" />
+                <Form.Control type="name" placeholder="" />
               </Form.Group>
             </Col>
           </Row>
           <Row>
             <Col>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlSelect1"
-              >
+              <Form.Group className="mb-3" controlId="">
                 <Form.Label>Adresse</Form.Label>
-                <Form.Control type="name" placeholder="name@example.com" />
+                <Form.Control type="name" placeholder="" />
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlSelect1"
-              >
+              <Form.Group className="mb-3" controlId="">
                 <Form.Label>Ville</Form.Label>
-                <Form.Control type="name" placeholder="name@example.com" />
+                <Form.Control type="name" placeholder="" />
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlSelect1"
-              >
+              <Form.Group className="mb-3" controlId="">
                 <Form.Label>Code Postal</Form.Label>
-                <Form.Control type="name" placeholder="name@example.com" />
+                <Form.Control type="name" placeholder="" />
               </Form.Group>
             </Col>
           </Row>

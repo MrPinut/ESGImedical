@@ -1,13 +1,12 @@
 import { Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import NavDoctor from "../../components/NavDoctor";
 
 function FormOrdonnance() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   function handleSubmit() {
-    // HANDLE DATA NEED TO BE SUBMITTED
-    navigate("/doctor");
+    // navigate("/doctor");
   }
   return (
     <>

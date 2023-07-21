@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { useLocation, useNavigate } from "react-router-dom";
 
 import {
   EthereumClient,
@@ -27,16 +26,6 @@ const wagmiConfig = createConfig({
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
 function Header() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  function handleHome() {
-    navigate("/");
-  }
-  function handleHistories() {
-    navigate("/histories");
-  }
-
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>

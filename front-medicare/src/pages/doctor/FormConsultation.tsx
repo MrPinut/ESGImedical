@@ -1,18 +1,16 @@
 import NavDoctor from "../../components/NavDoctor";
 import { Button, Card, Container, Row, Col, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Datetime from "react-datetime";
 
 function FormConsultation() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleDateTimeChange = (date: any) => {
-    // Handle the selected date-time here
     console.log(date);
   };
 
   function handleSubmit() {
-    // HANDLE DATA NEED TO BE SUBMITTED
-    navigate("/doctor/consultation/ordonnance");
+    // navigate("/doctor/consultation/ordonnance");
   }
 
   return (
