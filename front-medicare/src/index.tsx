@@ -15,6 +15,9 @@ import Ordonnances from "./pages/users/Ordonnance";
 import AddDoctor from "./pages/admin/AddDoctor";
 import AddPatient from "./pages/admin/AddPatient";
 import Admin from "./pages/admin/Admin";
+import DoctorAppointments from "./pages/doctor/DoctorAppointment";
+import FormConsultation from "./pages/doctor/FormConsultation";
+import FormOrdonnance from "./pages/doctor/FormOrdonnance";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -30,13 +33,25 @@ root.render(
           <Route path="/account/payment" element={<Payment />}></Route>
           <Route path="/histories/vaccines" element={<Vaccine />}></Route>
           <Route path="/histories/radios" element={<Radio />}></Route>
+          <Route
+            path="/histories/ordonnances"
+            element={<Ordonnances />}
+          ></Route>
           <Route path="/admin/patient" element={<AddPatient />}></Route>
           <Route path="/admin/doctor" element={<AddDoctor />}></Route>
           <Route path="/appointments" element={<Appointments />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
           <Route
-            path="/histories/ordonnances"
-            element={<Ordonnances />}
+            path="/doctor/writeConsultation"
+            element={<FormConsultation />}
+          ></Route>
+          <Route
+            path="/doctor/writeConsultation/ordonnance"
+            element={<FormOrdonnance />}
+          ></Route>
+          <Route
+            path="/doctor/listAppointment"
+            element={<DoctorAppointments />}
           ></Route>
         </Routes>
       </BrowserRouter>
