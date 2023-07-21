@@ -1,15 +1,18 @@
-import Table from "react-bootstrap/Table";
 import NavAdmin from "../../components/NavAdmin";
 import MiniNavAdmin from "../../components/MiniNavAdmin";
-
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row, Table } from "react-bootstrap";
 
 function ListPatients() {
   return (
     <>
       <NavAdmin />
       <MiniNavAdmin />
-      <h1 className="text-center p-4">Mes patients</h1>
+      <h1 className="text-center p-4">
+        Liste des patients{" "}
+        <Button href="/admin/patient/add" variant="outline-primary">
+          + Ajouter un patient
+        </Button>
+      </h1>
       <div className="">
         <Table className="">
           <thead>
@@ -31,15 +34,7 @@ function ListPatients() {
                   <Row>
                     <Col>
                       <Button
-                        href="/doctor/writeConsultation"
-                        variant="outline-primary"
-                      >
-                        Rédiger une consultation
-                      </Button>
-                    </Col>
-                    <Col>
-                      <Button
-                        href="/doctor/patient/info"
+                        href="/admin/patient/info"
                         variant="outline-success"
                       >
                         Consulter
@@ -48,7 +43,7 @@ function ListPatients() {
 
                     <Col>
                       <Button
-                        href="/doctor/writeConsultation"
+                        href="/admin/deletePatient"
                         variant="outline-danger"
                       >
                         X
@@ -68,14 +63,6 @@ function ListPatients() {
                   <Row>
                     <Col>
                       <Button
-                        href="/doctor/writeConsultation"
-                        variant="outline-primary"
-                      >
-                        Rédiger une consultation
-                      </Button>
-                    </Col>
-                    <Col>
-                      <Button
                         href="/doctor/patient/info"
                         variant="outline-success"
                       >
@@ -85,7 +72,7 @@ function ListPatients() {
 
                     <Col>
                       <Button
-                        href="/doctor/writeConsultation"
+                        href="/doctor/patient/delete"
                         variant="outline-danger"
                       >
                         X

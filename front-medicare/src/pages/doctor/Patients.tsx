@@ -45,7 +45,7 @@ function Patients() {
 
                     <Col>
                       <Button
-                        href="/doctor/writeConsultation"
+                        href="/doctor/patient/delete"
                         variant="outline-danger"
                       >
                         X
