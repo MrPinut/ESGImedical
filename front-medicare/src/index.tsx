@@ -23,6 +23,8 @@ import Consultation from "./pages/users/Consultations";
 import Patients from "./pages/doctor/Patients";
 import DetailPatient from "./pages/doctor/DetailPatient";
 import UpdatePatient from "./pages/doctor/UpdatePatient";
+import ListPatients from "./pages/admin/ListPatients";
+import ListDoctors from "./pages/admin/ListDoctor";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -52,6 +54,10 @@ root.render(
           <Route path="/admin/patient" element={<AddPatient />}></Route>
           <Route path="/admin/doctor" element={<AddDoctor />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/admin/listPatient" element={<ListPatients />}></Route>
+          <Route path="/admin/listDoctor" element={<ListDoctors />}></Route>
+          <Route path="/admin/listParamed" element={<ListDoctors />}></Route>
+
           {/* DOCTOR */}
           <Route
             path="/doctor/writeConsultation"
