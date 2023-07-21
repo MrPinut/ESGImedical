@@ -21,9 +21,6 @@ function Admin() {
               Listes des parapharmaciens
             </Button>
           </Col>
-          <Col>
-            <Button variant="outline-primary">Listes des mutuelles</Button>{" "}
-          </Col>
         </Row>
       </Container>
     </>
