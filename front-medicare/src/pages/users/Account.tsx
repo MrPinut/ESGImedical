@@ -10,7 +10,10 @@ function Account() {
     <>
       <Header />
       <NavAccount />
-      <Card border="primary" style={{ width: "100%" }}>
+      <h1 className="text-center p-4 m-2">Mon compte </h1>
+      <Card border="dark" className="mt-5" style={{ width: "100%" }}>
+        {/* A REMPLIR AVEC LES DONNEES BDD OU BLOCKCHAIN */}
+
         <Card.Header>Informations essentielles</Card.Header>
         <Card.Body>
           <Container>
