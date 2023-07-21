@@ -29,7 +29,7 @@ function DoctorHistory() {
               <td>Il est juste tombé enrhumé</td>
               <td>
                 <Button
-                  href="/doctor/histories/detailConsultation"
+                  href="/doctor/consultation/detailConsultation"
                   variant="outline-secondary"
                 >
                   Détails
@@ -47,7 +47,7 @@ function DoctorHistory() {
               </td>
               <td>
                 <Button
-                  href="/doctor/histories/detailConsultation"
+                  href="/doctor/consultation/detailConsultation"
                   variant="outline-secondary"
                 >
                   Détails
