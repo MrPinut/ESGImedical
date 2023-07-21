@@ -42,14 +42,7 @@ function Patients() {
                         Consulter
                       </Button>
                     </Col>
-                    <Col>
-                      <Button
-                        href="/doctor/writeConsultation"
-                        variant="outline-warning"
-                      >
-                        Modifier
-                      </Button>
-                    </Col>
+
                     <Col>
                       <Button
                         href="/doctor/writeConsultation"
@@ -80,20 +73,13 @@ function Patients() {
                     </Col>
                     <Col>
                       <Button
-                        href="/doctor/writeConsultation"
+                        href="/doctor/patient/info"
                         variant="outline-success"
                       >
                         Consulter
                       </Button>
                     </Col>
-                    <Col>
-                      <Button
-                        href="/doctor/writeConsultation"
-                        variant="outline-warning"
-                      >
-                        Modifier
-                      </Button>
-                    </Col>
+
                     <Col>
                       <Button
                         href="/doctor/writeConsultation"

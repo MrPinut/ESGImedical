@@ -20,6 +20,7 @@ import DoctorDetailConsultation from "./pages/doctor/DoctorDetailConsultation";
 import Consultation from "./pages/users/Consultations";
 import Patients from "./pages/doctor/Patients";
 import DetailPatient from "./pages/doctor/DetailPatient";
+import UpdatePatient from "./pages/doctor/UpdatePatient";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -59,14 +60,18 @@ root.render(
             element={<FormOrdonnance />}
           ></Route>
           <Route path="/doctor/patients" element={<Patients />}></Route>
-          <Route path="/doctor/histories" element={<DoctorHistory />}></Route>
           <Route
-            path="/doctor/consultation/detailConsultation"
-            element={<DoctorDetailConsultation />}
+            path="/doctor/patient/update"
+            element={<UpdatePatient />}
           ></Route>
           <Route
             path="/doctor/patient/info"
             element={<DetailPatient />}
+          ></Route>
+          <Route path="/doctor/histories" element={<DoctorHistory />}></Route>
+          <Route
+            path="/doctor/consultation/detailConsultation"
+            element={<DoctorDetailConsultation />}
           ></Route>
         </Routes>
       </BrowserRouter>

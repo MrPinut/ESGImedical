@@ -5,7 +5,18 @@ function DetailPatient() {
   return (
     <>
       <NavDoctor />
-      <h1 className="text-center p-4 m-2">Information du patient </h1>
+      <div className="mt-4">
+        <Button href="/doctor/patients" variant="outline-primary">
+          Retour
+        </Button>
+      </div>
+      <h1 className="text-center p-4 m-2">
+        Information du patient{" "}
+        <Button href="/doctor/patient/update" variant="outline-warning">
+          Modifier
+        </Button>{" "}
+      </h1>
+
       <Card border="dark" className="mt-5" style={{ width: "100%" }}>
         {/* A REMPLIR AVEC LES DONNEES BDD OU BLOCKCHAIN */}
 
@@ -36,7 +47,12 @@ function DetailPatient() {
       </Card>
 
       {/* LISTES DE CONSULTATIONS */}
-      <h1 className="text-center p-4">Listes des consultations </h1>
+      <h1 className="text-center p-4">
+        Listes des consultations{" "}
+        <Button href="/doctor/writeConsultation" variant="outline-primary">
+          + Nouvelle consultation
+        </Button>
+      </h1>
       <div>
         <Table striped="columns" className="m-2">
           <thead>
@@ -69,14 +85,7 @@ function DetailPatient() {
                         Consulter
                       </Button>
                     </Col>
-                    <Col>
-                      <Button
-                        href="/doctor/consultation/update"
-                        variant="outline-warning"
-                      >
-                        Modifier
-                      </Button>
-                    </Col>
+
                     <Col>
                       <Button
                         href="/doctor/consultation/delete"
@@ -101,21 +110,12 @@ function DetailPatient() {
               <td>
                 <Container>
                   <Row>
-                    <Col></Col>
                     <Col>
                       <Button
                         href="/doctor/writeConsultation"
                         variant="outline-success"
                       >
                         Consulter
-                      </Button>
-                    </Col>
-                    <Col>
-                      <Button
-                        href="/doctor/writeConsultation"
-                        variant="outline-warning"
-                      >
-                        Modifier
                       </Button>
                     </Col>
                     <Col>
