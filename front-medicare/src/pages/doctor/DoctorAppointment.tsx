@@ -1,6 +1,7 @@
 import Table from "react-bootstrap/Table";
 import NavDoctor from "../../components/NavDoctor";
 import { Button } from "react-bootstrap";
+
 function DoctorAppointments() {
   return (
     <>
@@ -29,7 +30,12 @@ function DoctorAppointments() {
               <td>Hôpital Père Lachaise, Paris</td>
               <td>Vérification de la vue</td>
               {/* if time's up */}
-              <Button variant="outline-primary">Rédiger la consultation</Button>
+              <Button
+                href="/doctor/writeConsultation"
+                variant="outline-primary"
+              >
+                Rédiger la consultation
+              </Button>
             </tr>
             {/* UNTIL HERE, CSS DOWN BELOW IS USELESS */}
             <tr>
@@ -42,6 +48,7 @@ function DoctorAppointments() {
               <Button
                 variant="outline-primary"
                 href="/doctor/writeConsultation"
+                // onClick={handleAppointment}
               >
                 Rédiger la consultation
               </Button>

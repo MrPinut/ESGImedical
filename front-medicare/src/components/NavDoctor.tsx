@@ -47,7 +47,7 @@ function NavDoctor() {
             navbarScroll
           >
             <Nav.Link href="/doctor/listAppointment">Futur RDVs</Nav.Link>
-            <Nav.Link href="/doctor/pastAppointment">
+            <Nav.Link href="/doctor/histories">
               Historique consultations
             </Nav.Link>
 

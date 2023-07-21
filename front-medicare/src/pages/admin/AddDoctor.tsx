@@ -1,6 +1,5 @@
-import { Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import NavAdmin from "../../components/NavAdmin";
-import Form from "react-bootstrap/Form";
 
 function AddDoctor() {
   return (
@@ -37,6 +36,7 @@ function AddDoctor() {
         <Form.Group className="mt-4">
           <Form.Control type="submit" value="Ajouter +"></Form.Control>
         </Form.Group>
+        {/* <Button type="submit" variant="primary">Ajouter+</Button> */}
       </Form>
     </>
   );
