@@ -57,7 +57,7 @@ function Header() {
           <div className="d-flex">
             <div className="me-2">
               <WagmiConfig config={wagmiConfig}>
-                <HomePage />
+                <Web3Button />
               </WagmiConfig>
               <Web3Modal
                 projectId={projectId}
