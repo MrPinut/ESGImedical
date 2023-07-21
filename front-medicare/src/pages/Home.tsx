@@ -6,6 +6,7 @@ import {
 import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { arbitrum, mainnet, polygon } from "wagmi/chains";
+import Header from "../components/Header";
 
 function HomePage() {
   const chains = [arbitrum, mainnet, polygon];
@@ -21,12 +22,13 @@ function HomePage() {
   });
   const ethereumClient = new EthereumClient(wagmiConfig, chains);
   return (
-    <div>
-      <Web3Modal
-        projectId="607c342fe55eeaa0275572f582aa6cd8"
-        ethereumClient={ethereumClient}
-      />
-    </div>
+    <>
+      <Header />
+      {/* <Web3Modal
+      projectId="607c342fe55eeaa0275572f582aa6cd8"
+      ethereumClient={ethereumClient}
+    /> */}
+    </>
   );
 }
 export default HomePage;

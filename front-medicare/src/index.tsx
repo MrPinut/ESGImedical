@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-datetime/css/react-datetime.css";
+import reportWebVitals from "./reportWebVitals";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "react-datetime/css/react-datetime.css";
-
-import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import History from "./pages/users/history/History";
 import Account from "./pages/users/Account";
@@ -55,8 +54,6 @@ root.render(
           <Route path="/admin/doctor/add" element={<AddDoctor />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="/admin/listPatient" element={<ListPatients />}></Route>
-          <Route path="/admin/listDoctor" element={<ListDoctors />}></Route>
-          <Route path="/admin/listParamed" element={<ListDoctors />}></Route>
 
           {/* DOCTOR */}
           <Route

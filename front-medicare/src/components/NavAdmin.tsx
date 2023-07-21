@@ -1,7 +1,5 @@
 import Logo from "../assets/logo.png";
-import Container from "react-bootstrap/Container";
-import { Nav, Navbar } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Nav, Navbar, Container } from "react-bootstrap";
 
 import {
   EthereumClient,
@@ -25,16 +23,6 @@ const wagmiConfig = createConfig({
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
 function NavAdmin() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  function handleHome() {
-    navigate("/");
-  }
-  function handleHistories() {
-    navigate("/histories");
-  }
-
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -54,7 +42,7 @@ function NavAdmin() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link onClick={handleHome}>Accueil</Nav.Link>
+            <Nav.Link href="/">Accueil</Nav.Link>
             <Nav.Link href="/admin">Liste</Nav.Link>
             <Nav.Link href="/admin/doctor">Ajout Doctor +</Nav.Link>
             <Nav.Link href="/admin/patient">Ajout Patient +</Nav.Link>

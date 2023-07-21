@@ -1,14 +1,20 @@
 import NavDoctor from "../../components/NavDoctor";
-import Form from "react-bootstrap/Form";
-import { Button, Card, InputGroup, Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  Card,
+  InputGroup,
+  Container,
+  Row,
+  Col,
+  Form,
+} from "react-bootstrap";
+// import { useNavigate } from "react-router-dom";
 
 function UpdatePatient() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   function handleSubmit() {
-    // HANDLE DATA NEED TO BE SUBMITTED
-    navigate("/doctor/consultation/ordonnance");
+    // navigate("/doctor/consultation/ordonnance");
   }
 
   return (
