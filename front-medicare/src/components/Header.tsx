@@ -56,13 +56,10 @@ function Header() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link onClick={handleHome}>Accueil</Nav.Link>
-            <Nav.Link href="/appointments">Mes RDVs</Nav.Link>
+            <Nav.Link href="/">Accueil</Nav.Link>
+            <Nav.Link href="/histories">Historiques</Nav.Link>
             <NavDropdown title="Informations" id="navbarScrollingDropdown">
               <NavDropdown.Item>Documents</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleHistories}>
-                Historiques
-              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/account">Mon Compte</NavDropdown.Item>
             </NavDropdown>

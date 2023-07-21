@@ -31,7 +31,12 @@ function History() {
               <td>Consultation pour maux de tête et de gorges</td>
               <td>Il est juste tombé enrhumé</td>
               <td>
-                <Button variant="outline-secondary">Détails</Button>{" "}
+                <Button
+                  href="/histories/consultationDetail"
+                  variant="outline-secondary"
+                >
+                  Détails
+                </Button>
               </td>
             </tr>
             <tr>
@@ -42,6 +47,14 @@ function History() {
               <td>Check annuel dentaire avec détartrage</td>
               <td>
                 Attention au dent de sagesses qui doivent bientôt être enlevé
+              </td>
+              <td>
+                <Button
+                  href="/histories/consultationDetail"
+                  variant="outline-secondary"
+                >
+                  Détails
+                </Button>{" "}
               </td>
             </tr>
           </tbody>

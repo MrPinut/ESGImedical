@@ -12,8 +12,7 @@ function DoctorAppointments() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Docteur</th>
-              <th>Spécialité</th>
+              <th>Patient</th>
               <th>Date-Heure</th>
               <th>Lieu</th>
               <th>Type</th>
@@ -25,7 +24,6 @@ function DoctorAppointments() {
             <tr>
               <td>1</td>
               <td>Mark Boulanger</td>
-              <td>Ophtalmologue</td>
               <td>02/09/2023-10:30</td>
               <td>Hôpital Père Lachaise, Paris</td>
               <td>Vérification de la vue</td>
@@ -39,9 +37,8 @@ function DoctorAppointments() {
             </tr>
             {/* UNTIL HERE, CSS DOWN BELOW IS USELESS */}
             <tr>
-              <td>1</td>
+              <td>2</td>
               <td>Pascal Chabert</td>
-              <td>Généraliste</td>
               <td>03/09/2023-10:30</td>
               <td>Hôpital Père Lachaise, Paris</td>
               <td>Analyse prise de sang</td>
