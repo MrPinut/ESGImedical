@@ -39,16 +39,10 @@ function NavScrollExample() {
     navigate("/histories");
   }
 
-  function handleMenu() {
-    navigate("/Menu", { state: { connect: false } });
-  }
-  function handleMenuConnected() {
-    navigate("/Menu/user", { state: { connect: true } });
-  }
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="/">
           <img
             src={Logo}
             width="100"
@@ -65,7 +59,7 @@ function NavScrollExample() {
             navbarScroll
           >
             <Nav.Link onClick={handleHome}>Accueil</Nav.Link>
-            <Nav.Link href="#action2">Mes RDVs</Nav.Link>
+            <Nav.Link href="/appointments">Mes RDVs</Nav.Link>
             <NavDropdown title="Informations" id="navbarScrollingDropdown">
               <NavDropdown.Item>Documents</NavDropdown.Item>
               <NavDropdown.Item onClick={handleHistories}>

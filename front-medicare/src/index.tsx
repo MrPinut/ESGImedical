@@ -6,9 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import History from "./pages/users/history/History";
-import Consultations from "./pages/users/history/Consultations";
 import Account from "./pages/users/Account";
 import Payment from "./pages/users/Payment";
+import Vaccine from "./pages/users/history/Vaccine";
+import Radio from "./pages/users/history/Radio";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -20,10 +21,10 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}></Route>
           <Route path="/histories" element={<History />}></Route>
-          <Route path="/consultations" element={<Consultations />}></Route>
           <Route path="/account" element={<Account />}></Route>
           <Route path="/account/payment" element={<Payment />}></Route>
-          {/* <Route path="/modifyDrink/admin" element={<UpdateDrink />}></Route> */}
+          <Route path="/histories/vaccines" element={<Vaccine />}></Route>
+          <Route path="/histories/radios" element={<Radio />}></Route>
         </Routes>
       </BrowserRouter>
     </React.StrictMode>

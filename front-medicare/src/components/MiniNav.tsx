@@ -7,16 +7,16 @@ function MiniNav() {
         <Nav.Link href="/histories">Résumés</Nav.Link>
       </Nav.Item> */}
       <Nav.Item>
-        <Nav.Link href="/consultations">Consultations</Nav.Link>
+        <Nav.Link href="/histories">Consultations</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="/ordonnances">Ordonnances</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/vaccins">Vaccins</Nav.Link>
+        <Nav.Link href="/vaccines">Vaccins</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/radio">Radios</Nav.Link>
+        <Nav.Link href="/radios">Radios</Nav.Link>
       </Nav.Item>
     </Nav>
   );
