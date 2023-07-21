@@ -36,6 +36,24 @@ function Vaccine() {
           <Col>
             <Card style={{ width: "18rem" }}>
               <Card.Body>
+                <Card.Title>Pneumocoque</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  02/04/2003
+                </Card.Subtitle>
+                <Card.Text>
+                  <div>
+                    <span>Docteur:</span> Luc Dupuis
+                  </div>
+                  <div>
+                    <span>Adresse:</span> 10 Avenue Victor Hugo, 75003
+                  </div>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card style={{ width: "18rem" }}>
+              <Card.Body>
                 <Card.Title>Hépatite B</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
                   02/04/2003
