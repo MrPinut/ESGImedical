@@ -2,6 +2,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import "react-datetime/css/react-datetime.css";
+
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import History from "./pages/users/history/History";
@@ -56,7 +58,7 @@ root.render(
             element={<FormConsultation />}
           ></Route>
           <Route
-            path="/doctor/writeConsultation/ordonnance"
+            path="/doctor/consultation/ordonnance"
             element={<FormOrdonnance />}
           ></Route>
           <Route path="/doctor/patients" element={<Patients />}></Route>
