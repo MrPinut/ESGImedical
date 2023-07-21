@@ -53,7 +53,6 @@ function NavDoctor() {
           <div className="d-flex">
             <div className="me-2">
               <WagmiConfig config={wagmiConfig}>
-                <Web3Button />
                 <HomePage />
               </WagmiConfig>
               <Web3Modal

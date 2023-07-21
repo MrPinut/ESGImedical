@@ -53,7 +53,8 @@ root.render(
           <Route path="/admin/patient/add" element={<AddPatient />}></Route>
           <Route path="/admin/doctor/add" element={<AddDoctor />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
-          <Route path="/admin/listPatient" element={<ListPatients />}></Route>
+          <Route path="/admin/patients" element={<ListPatients />}></Route>
+          <Route path="/admin/doctors" element={<ListDoctors />}></Route>
 
           {/* DOCTOR */}
           <Route

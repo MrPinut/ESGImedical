@@ -43,16 +43,14 @@ function NavAdmin() {
             navbarScroll
           >
             <Nav.Link href="/">Accueil</Nav.Link>
-            <Nav.Link href="/admin">Liste</Nav.Link>
-            <Nav.Link href="/admin/doctor">Ajout Doctor +</Nav.Link>
-            <Nav.Link href="/admin/patient">Ajout Patient +</Nav.Link>
+            <Nav.Link href="/admin/doctors">Liste Docteurs</Nav.Link>
+            <Nav.Link href="/admin/patients">Liste Patient</Nav.Link>
 
             <Nav.Link href="#" disabled></Nav.Link>
           </Nav>
           <div className="d-flex">
             <div className="me-2">
               <WagmiConfig config={wagmiConfig}>
-                <Web3Button />
                 <HomePage />
               </WagmiConfig>
               <Web3Modal
