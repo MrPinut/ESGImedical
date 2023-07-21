@@ -1,12 +1,10 @@
 import NavAdmin from "../../components/NavAdmin";
-import MiniNavAdmin from "../../components/MiniNavAdmin";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 
 function ListPatients() {
   return (
     <>
       <NavAdmin />
-      <MiniNavAdmin />
       <h1 className="text-center p-4">
         Liste des patients{" "}
         <Button href="/admin/patient/add" variant="outline-primary">

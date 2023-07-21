@@ -1,19 +1,11 @@
 import NavAdmin from "../../components/NavAdmin";
-import MiniNavAdmin from "../../components/MiniNavAdmin";
 import { Button, Col, Container, Row, Table, Form } from "react-bootstrap";
 import { ChangeEvent } from "react";
-interface SearchBarProps {
-  onSearch: (searchText: string) => void;
-}
-const ListDoctors: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchText = event.target.value;
-    onSearch(searchText);
-  };
+
+function ListDoctors() {
   return (
     <>
       <NavAdmin />
-      <MiniNavAdmin />
       <h1 className="text-center p-4">
         Liste des docteurs{" "}
         <Button href="/admin/doctor/add" variant="outline-primary">
@@ -21,15 +13,6 @@ const ListDoctors: React.FC<SearchBarProps> = ({ onSearch }) => {
         </Button>
       </h1>
       <div className="">
-        <Form>
-          <Form.Group controlId="searchBar">
-            <Form.Control
-              type="text"
-              placeholder="Search..."
-              onChange={handleInputChange}
-            />
-          </Form.Group>
-        </Form>
         <Table className="">
           <thead>
             <tr>
@@ -107,5 +90,5 @@ const ListDoctors: React.FC<SearchBarProps> = ({ onSearch }) => {
       </div>
     </>
   );
-};
+}
 export default ListDoctors;
