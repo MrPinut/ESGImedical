@@ -26,7 +26,7 @@ function NavAdmin() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href="/admin">
           <img
             src={Logo}
             width="100"
@@ -42,7 +42,7 @@ function NavAdmin() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="/">Accueil</Nav.Link>
+            <Nav.Link href="/admin">Accueil</Nav.Link>
             <Nav.Link href="/admin/doctors">Liste Docteurs</Nav.Link>
             <Nav.Link href="/admin/patients">Liste Patient</Nav.Link>
 

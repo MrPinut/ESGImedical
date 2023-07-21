@@ -5,7 +5,7 @@ function HomePage() {
   return (
     <>
       {/* <Header /> */}
-      <Web3Button />
+      <h1 className="text-center p-4">Bienvenue sur votre dossier médical</h1>
     </>
   );
 }
