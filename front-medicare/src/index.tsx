@@ -10,6 +10,7 @@ import Account from "./pages/users/Account";
 import Payment from "./pages/users/Payment";
 import Vaccine from "./pages/users/history/Vaccine";
 import Radio from "./pages/users/history/Radio";
+import Appointments from "./pages/users/Appointments";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -25,6 +26,7 @@ root.render(
           <Route path="/account/payment" element={<Payment />}></Route>
           <Route path="/histories/vaccines" element={<Vaccine />}></Route>
           <Route path="/histories/radios" element={<Radio />}></Route>
+          <Route path="/appointments" element={<Appointments />}></Route>
         </Routes>
       </BrowserRouter>
     </React.StrictMode>
