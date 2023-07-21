@@ -46,10 +46,10 @@ function NavDoctor() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="/doctor/listAppointment">Futur RDVs</Nav.Link>
-            <Nav.Link href="/doctor/histories">
+            <Nav.Link href="/doctor/patients">Mes patients</Nav.Link>
+            {/* <Nav.Link href="/doctor/histories">
               Historique consultations
-            </Nav.Link>
+            </Nav.Link> */}
 
             <Nav.Link href="#" disabled></Nav.Link>
           </Nav>

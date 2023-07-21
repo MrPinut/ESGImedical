@@ -6,11 +6,13 @@ function DoctorDetailConsultation() {
   return (
     <>
       <NavDoctor />
-      <div>
-        <Button href="/doctor/histories">Retour</Button>
+      <div className="mt-4">
+        <Button variant="outline-primary" href="/doctor/patient/info">
+          Retour
+        </Button>
       </div>
 
-      <h1 className="text-center p-4">Détail de la consultation</h1>
+      <h1 className="text-center mt-2 p-2">Détail de la consultation</h1>
       <Card border="dark" className="mt-2" style={{ width: "100%" }}>
         {/* A REMPLIR AVEC LES DONNEES BDD OU BLOCKCHAIN */}
 

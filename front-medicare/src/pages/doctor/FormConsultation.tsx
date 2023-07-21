@@ -1,10 +1,9 @@
 import NavDoctor from "../../components/NavDoctor";
 import Form from "react-bootstrap/Form";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
 function FormConsultation() {
@@ -18,9 +17,13 @@ function FormConsultation() {
   return (
     <>
       <NavDoctor />
-      <Card border="dark" className="mt-5" style={{ width: "100%" }}>
+      <div className="mt-4">
+        <Button href="/doctor/patients" variant="outline-primary">
+          Retour
+        </Button>
+      </div>
+      <Card border="dark" className="mt-3" style={{ width: "100%" }}>
         {/* A REMPLIR AVEC LES DONNEES BDD OU BLOCKCHAIN */}
-
         <Card.Header>Informations essentielles</Card.Header>
         <Card.Body>
           <Container>
