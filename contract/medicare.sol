@@ -69,6 +69,25 @@ contract Doctolib {
         isDoctor[msg.sender] = true;
     }
 
+    // Fonction pour mettre à jour les informations d'un médecin
+    function updateDoctorInfo(
+        string memory _firstName,
+        string memory _lastName,
+        string memory _speciality
+    ) external onlyDoctorOrAdmin {
+        require(isDoctor[msg.sender], "You are not registered as a doctor");
+        doctors[msg.sender].firstName = _firstName;
+        doctors[msg.sender].lastName = _lastName;
+        doctors[msg.sender].specialty = _speciality;
+    }
+
+    // Fonction pour supprimer un médecin
+    function removeDoctor(address _doctorAddress) external onlyAdmin {
+        require(isDoctor[_doctorAddress], "Invalid doctor address");
+        delete doctors[_doctorAddress];
+        isDoctor[_doctorAddress] = false;
+    }
+
     // Fonction pour ajouter un patient
     function addPatient (
         string memory _firstName,
@@ -82,6 +101,24 @@ contract Doctolib {
             dateOfBirth: _dateOfBirth
         });
         patients[msg.sender] = newPatient;
+    }
+
+    // Fonction pour mettre à jour les informations d'un patient
+    function updatePatientInfo(
+        string memory _firstName,
+        string memory _lastName,
+        string memory _dateOfBirth
+    ) external onlyDoctorOrAdmin {
+        require(bytes(patients[msg.sender].firstName).length != 0, "You must be a registered patient");
+        patients[msg.sender].firstName = _firstName;
+        patients[msg.sender].lastName = _lastName;
+        patients[msg.sender].dateOfBirth = _dateOfBirth;
+    }
+
+    // Fonction pour supprimer un patient (accessible aux administrateurs uniquement)
+    function removePatient(address _patientAddress) external onlyDoctorOrAdmin {
+        require(bytes(patients[_patientAddress].firstName).length != 0, "Invalid patient address");
+        delete patients[_patientAddress];
     }
 
     // Fonction pour obtenir les informations du médecin actuel
@@ -114,6 +151,12 @@ contract Doctolib {
             timestamp: block.timestamp
         });
         reservations[msg.sender] = newReservation;
+    }
+
+    // Fonction pour supprimer une réservation
+    function removeReservation(address _patientAddress) external onlyDoctorOrAdmin {
+        require(bytes(patients[_patientAddress].firstName).length != 0, "Invalid patient address");
+        delete reservations[_patientAddress];
     }
 
     function getPatientReservation() external view returns (Reservation memory) {
