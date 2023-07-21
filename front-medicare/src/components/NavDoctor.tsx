@@ -27,7 +27,7 @@ function NavDoctor() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href="/doctor">
           <img
             src={Logo}
             width="100"

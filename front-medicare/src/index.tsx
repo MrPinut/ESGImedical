@@ -24,6 +24,7 @@ import DetailPatient from "./pages/doctor/DetailPatient";
 import UpdatePatient from "./pages/doctor/UpdatePatient";
 import ListPatients from "./pages/admin/ListPatients";
 import ListDoctors from "./pages/admin/ListDoctor";
+import Doctor from "./pages/doctor/Doctor";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -50,13 +51,15 @@ root.render(
             element={<Ordonnances />}
           ></Route>
           {/* ADMIN */}
+          <Route path="/admin" element={<Admin />}></Route>
           <Route path="/admin/patient/add" element={<AddPatient />}></Route>
           <Route path="/admin/doctor/add" element={<AddDoctor />}></Route>
-          <Route path="/admin" element={<Admin />}></Route>
           <Route path="/admin/patients" element={<ListPatients />}></Route>
           <Route path="/admin/doctors" element={<ListDoctors />}></Route>
 
           {/* DOCTOR */}
+          <Route path="/doctor" element={<Doctor />}></Route>
+
           <Route
             path="/doctor/writeConsultation"
             element={<FormConsultation />}
