@@ -26,7 +26,7 @@ const wagmiConfig = createConfig({
 });
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
-function Header() {
+function NavAdmin() {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -57,15 +57,10 @@ function Header() {
             navbarScroll
           >
             <Nav.Link onClick={handleHome}>Accueil</Nav.Link>
-            <Nav.Link href="/appointments">Mes RDVs</Nav.Link>
-            <NavDropdown title="Informations" id="navbarScrollingDropdown">
-              <NavDropdown.Item>Documents</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleHistories}>
-                Historiques
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/account">Mon Compte</NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="/admin">Liste</Nav.Link>
+            <Nav.Link href="/admin/doctor">Ajout Doctor +</Nav.Link>
+            <Nav.Link href="/admin/patient">Ajout Patient +</Nav.Link>
+
             <Nav.Link href="#" disabled></Nav.Link>
           </Nav>
           <div className="d-flex">
@@ -93,4 +88,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default NavAdmin;

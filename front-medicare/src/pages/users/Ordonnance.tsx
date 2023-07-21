@@ -1,14 +1,14 @@
-import Header from "../../../components/Header";
-import MiniNav from "../../../components/MiniNav";
+import Header from "../../components/Header";
+import MiniNav from "../../components/MiniNav";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
-function History() {
+function Ordonnances() {
   return (
     <>
       <Header />
       <MiniNav />
-      <h1 className="text-center p-4">Résumé des consultations </h1>
+      <h1 className="text-center p-4">Listes des ordonnances</h1>
       <div>
         <Table striped="columns" className="m-5">
           <thead>
@@ -50,4 +50,4 @@ function History() {
     </>
   );
 }
-export default History;
+export default Ordonnances;
