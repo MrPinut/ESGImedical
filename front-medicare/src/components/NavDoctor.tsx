@@ -1,29 +1,50 @@
 import Logo from "../assets/logo.png";
 import Container from "react-bootstrap/Container";
+import { Button } from "react-bootstrap";
 import { Nav, Navbar } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import medicare from '../contract/medicare.json';
+import { ethers } from "ethers";
+import { Contract } from 'ethers';
+import '../App.css';
 
-import {
-  EthereumClient,
-  w3mConnectors,
-  w3mProvider,
-} from "@web3modal/ethereum";
-import { Web3Button, Web3Modal } from "@web3modal/react";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { arbitrum, mainnet, polygon } from "wagmi/chains";
-import HomePage from "../pages/Home";
-
-const chains = [arbitrum, mainnet, polygon];
-const projectId = "607c342fe55eeaa0275572f582aa6cd8";
-
-const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors: w3mConnectors({ projectId, chains }),
-  publicClient,
-});
-const ethereumClient = new EthereumClient(wagmiConfig, chains);
+const contractAddress = "0x48453b191516ED0bDb21916348691a7E85242085";
 
 function NavDoctor() {
+
+  const [accounts, setAccounts] = useState(['']);
+  const [contract, setContract] = useState<Contract | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    connectWallet();
+  }, []);
+
+  const connectWallet = async () => {
+    try {
+      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+      setAccounts(accounts);
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(contractAddress, medicare, signer);
+        } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(accounts[0])
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la copie du texte dans le presse-papiers :", error);
+      });
+  };
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -52,21 +73,12 @@ function NavDoctor() {
           </Nav>
           <div className="d-flex">
             <div className="me-2">
-              <WagmiConfig config={wagmiConfig}>
-                <Web3Button />
-              </WagmiConfig>
-              <Web3Modal
-                projectId={projectId}
-                ethereumClient={ethereumClient}
-              />
+              {(accounts[0].length > 0) ? (
+                <Button className={copied ? "copied-animation" : ""} onClick={handleCopyToClipboard} variant="outline-success"><span>{accounts[0].substring(0, 5) + '...' + accounts[0].substring(accounts[0].length - 3)}</span></Button>
+              ):(
+                <Button onClick={connectWallet}>Connect Wallet</Button>
+              )}
             </div>
-            {/* <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button> */}
           </div>
         </Navbar.Collapse>
       </Container>

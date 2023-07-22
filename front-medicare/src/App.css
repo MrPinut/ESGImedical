@@ -28,6 +28,21 @@
   color: #61dafb;
 }
 
+.copied-animation {
+  /* Styles pour l'animation */
+  background-color: green;
+  animation: fadeInOut 5s;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
