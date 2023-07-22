@@ -1,8 +1,70 @@
 import NavAdmin from "../../components/NavAdmin";
 import { Button, Col, Container, Row, Table, Form } from "react-bootstrap";
-import { ChangeEvent } from "react";
+import { useEffect, useState } from "react";
+import medicare from '../../contract/medicare.json';
+const ethers = require("ethers");
 
 function ListDoctors() {
+
+  type Doctor = {
+    firstName: string;
+    lastName: string;
+    gender: string;
+    nationality: string;
+    email: string;
+    adress: string;
+    postalCode: string;
+    city: string;
+    specialty: string;
+    ethAddress: string;
+  };
+
+  // const [doctorsInfo, setDoctorsInfo] = useState([]);
+  const [doctorsAddresses, setDoctorsAddresses] = useState<string[]>([]);
+  const [doctorsInfo, setDoctorsInfo] = useState<Doctor[]>([]);
+
+  const contractAddress = "0x48453b191516ED0bDb21916348691a7E85242085";
+
+  useEffect(() => {
+    async function init() {
+      // Connect to Ethereum provider
+      if (typeof window.ethereum !== 'undefined') {
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+
+        // Initialize contract instance
+        const contract = new ethers.Contract(contractAddress, medicare, signer);
+        const doctorsCount = await contract.getDoctorsCount();
+        await doctorsCount.wait;
+        const doctorsAddressesArray = [];
+        const doctorsInfoArray = [];
+        for (let i = 0; i < doctorsCount; i++) {
+          console.log(i);
+          const doctorAddress = await contract.doctorAddresses(i);
+          await doctorAddress.wait;
+          console.log(doctorAddress);
+          doctorsAddressesArray.push(doctorAddress);
+          const doctorInfo = await contract.getDoctorInfo(doctorAddress);
+          await doctorInfo.wait;
+          doctorsInfoArray.push(doctorInfo);
+          console.log(doctorInfo);
+        }
+        setDoctorsAddresses(doctorsAddressesArray);
+        setDoctorsInfo(doctorsInfoArray);
+      }
+    }
+    init();
+  }, []);
+
+  async function deleteDoctor(ethAddress: string) {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(contractAddress, medicare, signer);
+    const transaction = await contract.removeDoctor(ethAddress);
+    await transaction.wait();
+  }
+
   return (
     <>
       <NavAdmin />
@@ -12,82 +74,53 @@ function ListDoctors() {
           + Ajouter un docteur
         </Button>
       </h1>
-      <div className="">
-        <Table className="">
+      <div>
+      <h1>Doctors List</h1>
+      <Table className="">
           <thead>
             <tr>
               <th>#</th>
-              <th>Patient</th>
-              <th>Date de naissance</th>
-              <th>Spécialité</th>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Speciality</th>
               <th>Actions</th>
             </tr>
           </thead>
+          {doctorsInfo.map((doctor, index) => (
           <tbody>
-            {/* UPDATE DATA HERE FROM BDD OR BLOCKCHAIN --> MAKE A MAPPING*/}
-            <tr>
-              <td>1</td>
-              <td>Mark Boulanger</td>
-              <td>02/09/2021</td>
-              <td>Généraliste</td>
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{doctor.firstName} {doctor.lastName}</td>
+              <td>{doctor.city}</td>
+              <td>{doctor.specialty}</td>
               <td>
-                <Container>
-                  <Row>
-                    <Col>
-                      <Button
-                        href="/admin/doctor/info"
-                        variant="outline-success"
-                      >
-                        Consulter
-                      </Button>
-                    </Col>
+              <Container>
+                <Row>
+                  <Col>
+                    <Button
+                      href="/admin/doctor/info"
+                      variant="outline-success"
+                    >
+                      Consulter
+                    </Button>
+                  </Col>
 
-                    <Col>
-                      <Button
-                        href="/admin/doctor/delete"
-                        variant="outline-danger"
-                      >
-                        X
-                      </Button>
-                    </Col>
-                  </Row>
-                </Container>
-              </td>
-            </tr>
-            {/* UNTIL HERE, CSS DOWN BELOW IS USELESS */}
-            <tr>
-              <td>2</td>
-              <td>Pascal Chabert</td>
-              <td>03/09/2001</td>
-              <td>Généraliste</td>
-
-              <td>
-                <Container>
-                  <Row>
-                    <Col>
-                      <Button
-                        href="/doctor/patient/info"
-                        variant="outline-success"
-                      >
-                        Consulter
-                      </Button>
-                    </Col>
-
-                    <Col>
-                      <Button
-                        href="/doctor/patient/delete"
-                        variant="outline-danger"
-                      >
-                        X
-                      </Button>
-                    </Col>
-                  </Row>
-                </Container>
-              </td>
+                  <Col>
+                    <Button
+                      onClick={() => deleteDoctor(doctor.ethAddress)}
+                      variant="outline-danger"
+                    >
+                      SUPPRIMER
+                    </Button>
+                  </Col>
+                </Row>
+              </Container>
+            </td>
             </tr>
           </tbody>
-        </Table>
-      </div>
+          ))}
+      </Table>
+    </div>
     </>
   );
 }
