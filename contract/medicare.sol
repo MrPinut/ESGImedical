@@ -7,7 +7,15 @@ contract Doctolib {
     struct Doctor {
         string firstName;
         string lastName;
+        string gender;
+        string nationality;
+        string email;
+        string birthday;
+        string adress;
+        string postalCode;
+        string city;
         string specialty;
+        address ETHaddress;
     }
 
     // Mapping pour associer l'adresse du médecin à ses informations
@@ -17,7 +25,15 @@ contract Doctolib {
     struct Patient {
         string firstName;
         string lastName;
-        string dateOfBirth;
+        string gender;
+        string nationality;
+        string birthday;
+        string adress;
+        string postalCode;
+        string city;
+        string signe;
+        string groupeSanguin;
+        address ETHaddress;
     }
 
     // Mapping pour associer l'adresse du médecin à ses informations
@@ -34,6 +50,14 @@ contract Doctolib {
     // Mapping pour gérer les rôles d'accès
     mapping(address => bool) private isAdmin;
     mapping(address => bool) private isDoctor;
+
+    // Array to store doctor addresses
+    address[] public doctorAddresses;
+    address[] public patientAddresses;
+
+    constructor() {
+        isAdmin[msg.sender]=true;
+    }
 
     // modifier pour restreindre l'accès aux administrateurs
     modifier onlyAdmin() {
@@ -57,28 +81,61 @@ contract Doctolib {
     function addDoctor (
         string memory _firstName,
         string memory _lastName,
-        string memory _speciality
+        string memory _gender,
+        string memory _nationality,
+        string memory _city,
+        string memory _email,
+        string memory _birthday,
+        string memory _address,
+        string memory _postalCode,
+        string memory _specialty,
+        address _ETHaddress
     ) external onlyAdmin {
-        require(!isDoctor[msg.sender], "Already registered as a doctor");
+        require(!isDoctor[_ETHaddress], "Already registered as a doctor");
         Doctor memory newDoctor = Doctor({
             firstName: _firstName,
             lastName: _lastName,
-            specialty: _speciality
+            gender: _gender,
+            nationality: _nationality,
+            email: _email,
+            adress: _address,
+            postalCode: _postalCode,
+            ETHaddress: _ETHaddress,
+            birthday: _birthday,
+            city: _city,
+            specialty: _specialty
         });
-        doctors[msg.sender] = newDoctor;
-        isDoctor[msg.sender] = true;
+        doctors[_ETHaddress] = newDoctor;
+        isDoctor[_ETHaddress] = true;
+        doctorAddresses.push(_ETHaddress);
     }
 
     // Fonction pour mettre à jour les informations d'un médecin
     function updateDoctorInfo(
         string memory _firstName,
         string memory _lastName,
-        string memory _speciality
+        string memory _gender,
+        string memory _nationality,
+        string memory _city,
+        string memory _email,
+        string memory _birthday,
+        string memory _address,
+        string memory _postalCode,
+        string memory _specialty,
+        address _ETHaddress
     ) external onlyDoctorOrAdmin {
-        require(isDoctor[msg.sender], "You are not registered as a doctor");
-        doctors[msg.sender].firstName = _firstName;
-        doctors[msg.sender].lastName = _lastName;
-        doctors[msg.sender].specialty = _speciality;
+        require(isDoctor[_ETHaddress], "You are not registered as a doctor");
+        doctors[_ETHaddress].firstName = _firstName;
+        doctors[_ETHaddress].lastName = _lastName;
+        doctors[_ETHaddress].gender = _gender;
+        doctors[_ETHaddress].nationality = _nationality;
+        doctors[_ETHaddress].email = _email;
+        doctors[_ETHaddress].adress = _address;
+        doctors[_ETHaddress].postalCode = _postalCode;
+        doctors[_ETHaddress].city = _city;
+        doctors[_ETHaddress].birthday = _birthday;
+        doctors[_ETHaddress].specialty = _specialty;
+        doctors[_ETHaddress].ETHaddress = _ETHaddress;
     }
 
     // Fonction pour supprimer un médecin
@@ -86,39 +143,86 @@ contract Doctolib {
         require(isDoctor[_doctorAddress], "Invalid doctor address");
         delete doctors[_doctorAddress];
         isDoctor[_doctorAddress] = false;
+         for (uint256 i = 0; i < doctorAddresses.length; i++) {
+            if (doctorAddresses[i] == _doctorAddress) {
+                doctorAddresses[i] = doctorAddresses[doctorAddresses.length - 1];
+                doctorAddresses.pop();
+                break;
+            }
+        }
     }
 
     // Fonction pour ajouter un patient
     function addPatient (
         string memory _firstName,
         string memory _lastName,
-        string memory _dateOfBirth
+        string memory _gender,
+        string memory _nationality,
+        string memory _city,
+        string memory _groupeSanguin,
+        string memory _signe,
+        string memory _address,
+        string memory _postalCode,
+        string memory _birthday,
+        address _ETHaddress
     ) external onlyDoctorOrAdmin {
-        require(!isDoctor[msg.sender], "Already registered as a doctor");
+        require(bytes(patients[msg.sender].firstName).length == 0, "Already registered !");
         Patient memory newPatient = Patient({
             firstName: _firstName,
             lastName: _lastName,
-            dateOfBirth: _dateOfBirth
+            gender: _gender,
+            nationality: _nationality,
+            groupeSanguin: _groupeSanguin,
+            signe: _signe,
+            adress: _address,
+            postalCode: _postalCode,
+            city: _city,
+            birthday: _birthday,
+            ETHaddress: _ETHaddress
         });
-        patients[msg.sender] = newPatient;
+        patients[_ETHaddress] = newPatient;
+        patientAddresses.push(_ETHaddress);
     }
 
     // Fonction pour mettre à jour les informations d'un patient
     function updatePatientInfo(
         string memory _firstName,
         string memory _lastName,
-        string memory _dateOfBirth
+        string memory _gender,
+        string memory _nationality,
+        string memory _groupeSanguin,
+        string memory _signe,
+        string memory _city,
+        string memory _address,
+        string memory _postalCode,
+        string memory _dateOfBirth,
+        address _ETHaddress
     ) external onlyDoctorOrAdmin {
         require(bytes(patients[msg.sender].firstName).length != 0, "You must be a registered patient");
-        patients[msg.sender].firstName = _firstName;
-        patients[msg.sender].lastName = _lastName;
-        patients[msg.sender].dateOfBirth = _dateOfBirth;
+        patients[_ETHaddress].firstName = _firstName;
+        patients[_ETHaddress].lastName = _lastName;
+        patients[_ETHaddress].gender = _gender;
+        patients[_ETHaddress].nationality = _nationality;
+        patients[_ETHaddress].groupeSanguin = _groupeSanguin;
+        patients[_ETHaddress].signe = _signe;
+        patients[_ETHaddress].adress = _address;
+        patients[_ETHaddress].postalCode = _postalCode;
+        patients[_ETHaddress].city = _city;
+        patients[_ETHaddress].birthday = _dateOfBirth;
+        patients[_ETHaddress].ETHaddress = _ETHaddress;
     }
 
     // Fonction pour supprimer un patient (accessible aux administrateurs uniquement)
     function removePatient(address _patientAddress) external onlyDoctorOrAdmin {
         require(bytes(patients[_patientAddress].firstName).length != 0, "Invalid patient address");
         delete patients[_patientAddress];
+        for (uint256 i = 0; i < patientAddresses.length; i++) {
+            if (patientAddresses[i] == _patientAddress) {
+                patientAddresses[i] = patientAddresses[patientAddresses.length - 1];
+                patientAddresses.pop();
+                break;
+            }
+        }
     }
 
     // Fonction pour obtenir les informations du médecin actuel
@@ -161,5 +265,15 @@ contract Doctolib {
 
     function getPatientReservation() external view returns (Reservation memory) {
         return reservations[msg.sender];
+    }
+
+    // Function to get the total count of doctors
+    function getDoctorsCount() external view returns (uint256) {
+        return doctorAddresses.length;
+    }
+
+    // Function to get the total count of patients
+    function getpatientsCount() external view returns (uint256) {
+        return patientAddresses.length;
     }
 }
