@@ -8,7 +8,7 @@ import { ethers } from "ethers";
 import { Contract } from 'ethers';
 import '../App.css';
 
-const contractAddress = "0x48453b191516ED0bDb21916348691a7E85242085";
+const contractAddress = "0x69a0Ec83e4D713169D2CE709cfDfB8705112e539";
 
 function NavDoctor() {
 
