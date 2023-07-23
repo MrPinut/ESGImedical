@@ -11,26 +11,23 @@ function AddPatient() {
     buildContract();
   }, []);
 
-  const [accounts, setAccounts] = useState(['']);
   const [contract, setContract] = useState([]);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
   const [email, setEmail] = useState('');
   const [speciality, setSpeciality] = useState('');
-  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [birthday, setBirthday] = useState('');
   const [nationality, setNationality] = useState('');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [ethAddress, setEthAddress] = useState('');
 
-  const contractAddress = "0x48453b191516ED0bDb21916348691a7E85242085";
+  const contractAddress = "0x69a0Ec83e4D713169D2CE709cfDfB8705112e539";
 
   async function buildContract() {
     if (typeof window.ethereum !== 'undefined') {
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      setAccounts(accounts);
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const contract = new ethers.Contract(contractAddress, medicare, signer);
@@ -50,6 +47,7 @@ function AddPatient() {
         nationality,
         city,
         email,
+        birthday,
         address,
         postalCode,
         speciality,
@@ -59,7 +57,7 @@ function AddPatient() {
   }
 
   const handleDateTimeChange = (date: any) => {
-    setDateOfBirth(date.toString());
+    setBirthday(date.toString());
   };  
 
   return (

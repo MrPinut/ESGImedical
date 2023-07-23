@@ -46,6 +46,11 @@
 			},
 			{
 				"internalType": "string",
+				"name": "_birthday",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
 				"name": "_address",
 				"type": "string"
 			},
@@ -99,7 +104,12 @@
 			},
 			{
 				"internalType": "string",
-				"name": "_email",
+				"name": "_groupeSanguin",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_signe",
 				"type": "string"
 			},
 			{
@@ -114,7 +124,7 @@
 			},
 			{
 				"internalType": "string",
-				"name": "_dateOfBirth",
+				"name": "_birthday",
 				"type": "string"
 			},
 			{
@@ -219,6 +229,11 @@
 			},
 			{
 				"internalType": "string",
+				"name": "_birthday",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
 				"name": "_address",
 				"type": "string"
 			},
@@ -267,7 +282,12 @@
 			},
 			{
 				"internalType": "string",
-				"name": "_email",
+				"name": "_groupeSanguin",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_signe",
 				"type": "string"
 			},
 			{
@@ -359,6 +379,11 @@
 					},
 					{
 						"internalType": "string",
+						"name": "birthday",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
 						"name": "adress",
 						"type": "string"
 					},
@@ -376,6 +401,11 @@
 						"internalType": "string",
 						"name": "specialty",
 						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "ETHaddress",
+						"type": "address"
 					}
 				],
 				"internalType": "struct Doctolib.Doctor",
@@ -433,7 +463,7 @@
 					},
 					{
 						"internalType": "string",
-						"name": "email",
+						"name": "birthday",
 						"type": "string"
 					},
 					{
@@ -453,8 +483,18 @@
 					},
 					{
 						"internalType": "string",
-						"name": "dateOfBirth",
+						"name": "signe",
 						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "groupeSanguin",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "ETHaddress",
+						"type": "address"
 					}
 				],
 				"internalType": "struct Doctolib.Patient",
@@ -503,6 +543,25 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "patientAddresses",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",

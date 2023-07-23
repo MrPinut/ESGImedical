@@ -11,58 +11,56 @@ function ListDoctors() {
     lastName: string;
     gender: string;
     nationality: string;
+    city: string;
     email: string;
+    birthday: string;
     adress: string;
     postalCode: string;
-    city: string;
     specialty: string;
-    ethAddress: string;
+    ETHaddress: string;
   };
 
-  // const [doctorsInfo, setDoctorsInfo] = useState([]);
-  const [doctorsAddresses, setDoctorsAddresses] = useState<string[]>([]);
   const [doctorsInfo, setDoctorsInfo] = useState<Doctor[]>([]);
 
-  const contractAddress = "0x48453b191516ED0bDb21916348691a7E85242085";
-
+  const contractAddress = "0x69a0Ec83e4D713169D2CE709cfDfB8705112e539";
+  
   useEffect(() => {
-    async function init() {
-      // Connect to Ethereum provider
-      if (typeof window.ethereum !== 'undefined') {
-        await window.ethereum.request({ method: 'eth_requestAccounts' });
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-
-        // Initialize contract instance
-        const contract = new ethers.Contract(contractAddress, medicare, signer);
-        const doctorsCount = await contract.getDoctorsCount();
-        await doctorsCount.wait;
-        const doctorsAddressesArray = [];
-        const doctorsInfoArray = [];
-        for (let i = 0; i < doctorsCount; i++) {
-          console.log(i);
-          const doctorAddress = await contract.doctorAddresses(i);
-          await doctorAddress.wait;
-          console.log(doctorAddress);
-          doctorsAddressesArray.push(doctorAddress);
-          const doctorInfo = await contract.getDoctorInfo(doctorAddress);
-          await doctorInfo.wait;
-          doctorsInfoArray.push(doctorInfo);
-          console.log(doctorInfo);
-        }
-        setDoctorsAddresses(doctorsAddressesArray);
-        setDoctorsInfo(doctorsInfoArray);
-      }
-    }
     init();
   }, []);
 
+  async function init() {
+    // Connect to Ethereum provider
+    if (typeof window.ethereum !== 'undefined') {
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+
+      // Initialize contract instance
+      const contract = new ethers.Contract(contractAddress, medicare, signer);
+      const doctorsCount = await contract.getDoctorsCount();
+      await doctorsCount.wait;
+      const doctorsAddressesArray = [];
+      const doctorsInfoArray = [];
+      for (let i = 0; i < doctorsCount; i++) {
+        const doctorAddress = await contract.doctorAddresses(i);
+        await doctorAddress.wait;
+        doctorsAddressesArray.push(doctorAddress);
+        const doctorInfo = await contract.getDoctorInfo(doctorAddress);
+        await doctorInfo.wait;
+        doctorsInfoArray.push(doctorInfo);
+      }
+      setDoctorsInfo(doctorsInfoArray);
+    }
+  }
+
   async function deleteDoctor(ethAddress: string) {
+    console.log(ethAddress);
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(contractAddress, medicare, signer);
     const transaction = await contract.removeDoctor(ethAddress);
     await transaction.wait();
+    init();
   }
 
   return (
@@ -107,7 +105,7 @@ function ListDoctors() {
 
                   <Col>
                     <Button
-                      onClick={() => deleteDoctor(doctor.ethAddress)}
+                      onClick={() => deleteDoctor(doctor.ETHaddress)}
                       variant="outline-danger"
                     >
                       SUPPRIMER
